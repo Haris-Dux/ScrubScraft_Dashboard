@@ -122,7 +122,7 @@ const AdminBody = () => {
               >
                 <img
                   className="h-auto w-16 "
-                  src="../../public/logo.png"
+                  src="/logo.png"
                   alt="SrubScraft-Logo"
                 />
               </Link>

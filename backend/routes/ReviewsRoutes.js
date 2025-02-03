@@ -4,9 +4,10 @@ import {
   getAllReviews,
 
 } from "../controllers/ReviewsController.js";
+import { AdminOnly } from "../middleware/Auth.js";
 const reviewsRouter = express.Router();
 
-reviewsRouter.post("/reviews/deleteReview",deleteReview);
-reviewsRouter.post("/reviews/getAllReviews",getAllReviews);
+reviewsRouter.post("/reviews/deleteReview",AdminOnly,  deleteReview);
+reviewsRouter.post("/reviews/getAllReviews",AdminOnly,  getAllReviews);
 
 export default reviewsRouter;

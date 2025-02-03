@@ -142,7 +142,7 @@ const AllProducts = () => {
                 <div className="img">
                   <img
                     className="w-20"
-                    src="../../public/Dollar Bag.png"
+                    src="/Dollar Bag.png"
                     alt=""
                   />
                 </div>
@@ -164,7 +164,7 @@ const AllProducts = () => {
                 <div className="img">
                   <img
                     className="w-20"
-                    src="../../public/Dollar Bag.png"
+                    src="/Dollar Bag.png"
                     alt=""
                   />
                 </div>
@@ -183,7 +183,7 @@ const AllProducts = () => {
                 <div className="img">
                   <img
                     className="w-20"
-                    src="../../public/Dollar Bag.png"
+                    src="/Dollar Bag.png"
                     alt=""
                   />
                 </div>
@@ -202,7 +202,7 @@ const AllProducts = () => {
                 <div className="img">
                   <img
                     className="w-20"
-                    src="../../public/Shopping Bag.png"
+                    src="/Shopping Bag.png"
                     alt=""
                   />
                 </div>

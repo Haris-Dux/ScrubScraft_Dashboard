@@ -6,12 +6,13 @@ import {
   getSalesStatistics,
 
 } from "../controllers/DashboardControler.js";
+import { AdminOnly } from "../middleware/Auth.js";
 
 const dashboardRouter = express.Router();
 
-dashboardRouter.post("/dashboard/getPercentageOfOrderProgress", getPercentageOfOrderProgress);
-dashboardRouter.post("/dashboard/getSalesStatistics", getSalesStatistics);
-dashboardRouter.post("/dashboard/getMonthlyOrdersDifference", getMonthlyOrdersDifference);
-dashboardRouter.post("/dashboard/getOrderCountsByMonth", getOrderCountsByMonth);
+dashboardRouter.post("/dashboard/getPercentageOfOrderProgress",AdminOnly, getPercentageOfOrderProgress);
+dashboardRouter.post("/dashboard/getSalesStatistics",AdminOnly, getSalesStatistics);
+dashboardRouter.post("/dashboard/getMonthlyOrdersDifference",AdminOnly, getMonthlyOrdersDifference);
+dashboardRouter.post("/dashboard/getOrderCountsByMonth",AdminOnly, getOrderCountsByMonth);
 
 export default dashboardRouter;
