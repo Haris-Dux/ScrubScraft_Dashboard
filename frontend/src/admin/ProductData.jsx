@@ -1,0 +1,48 @@
+const product = [
+    {
+        id: 1,
+        image: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+        name: "Shirt 1",
+        price: "1500",
+        description: 'THis is a dress',
+        item_code: 'item01',
+        category: 'Fitness',
+        quantity: '22',
+        topSales: false,
+    },
+    {
+        id: 2,
+        image: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+        name: "Shirt 2",
+        price: "1200",
+        description: 'THis is a dress',
+        item_code: 'item01',
+        category: 'Kids',
+        quantity: '22',
+        topSales: false,
+    },
+    {
+        id: 3,
+        image: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+        name: "Shirt 3",
+        price: "1900",
+        description: 'THis is a dress',
+        item_code: 'item01',
+        category: 'Home',
+        quantity: '22',
+        topSales: false,
+    },
+    {
+        id: 4,
+        image: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+        name: "Shirt 4",
+        price: "2900",
+        description: 'THis is a dress',
+        item_code: 'item01',
+        category: 'Home',
+        quantity: '22',
+        topSales: false,
+    },
+]
+
+export default product;
