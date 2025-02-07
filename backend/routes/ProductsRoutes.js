@@ -33,7 +33,7 @@ productRouter.post(
   updateProduct
 );
 productRouter.post("/products/deleteProduct",AdminOnly, deleteProduct);
-productRouter.post("/products/getProducts",AdminOnly, getProducts);
-productRouter.post("/products/getProductById",AdminOnly, getProductById);
+productRouter.post("/products/getProducts", getProducts);
+productRouter.post("/products/getProductById", getProductById);
 
 export default productRouter;

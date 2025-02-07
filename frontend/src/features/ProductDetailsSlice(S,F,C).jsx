@@ -27,6 +27,34 @@ const getAllFabricsUrl = "/productDetails/getAllFabrics";
 const updateFabricUrl = "/productDetails/updateFabric";
 const deleteFabricUrl = "/productDetails/deleteFabric";
 
+const getAllPricingsUrl = "/pricing/getPricing";
+const updatedPricingUrl = "/pricing/updatePricing";
+
+//PRICINGS
+export const getAllPricingsAsync = createAsyncThunk(
+  "pricings/getAllPricings",
+  async () => {
+    try {
+      const response = await axios.get(getAllPricingsUrl);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+);
+
+export const updatedPricingAsync = createAsyncThunk(
+  "pricings/updatedPricing",
+  async (data) => {
+    try {
+      const response = await axios.post(updatedPricingUrl, data);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+);
+
 // CATEGORIES
 
 export const createCategoryAsync = createAsyncThunk(
@@ -235,7 +263,9 @@ const productDetailSlice = createSlice({
       .addCase(updateCategoryAsync.fulfilled, (state, action) => {
         state.createLoading = false;
         state.tabData = state.tabData.map((category) =>
-          category.id === action.payload.data.id ? action.payload.data : category
+          category.id === action.payload.data.id
+            ? action.payload.data
+            : category
         );
       })
       .addCase(updateCategoryAsync.rejected, (state) => {
@@ -364,6 +394,33 @@ const productDetailSlice = createSlice({
       })
       .addCase(deleteColorAsync.rejected, (state) => {
         state.deleteLoading = false;
+      })
+
+      // Get All PRICES
+      .addCase(getAllPricingsAsync.pending, (state) => {
+        state.tabData = [];
+        state.loading = true;
+      })
+      .addCase(getAllPricingsAsync.fulfilled, (state, action) => {
+        state.loading = false;
+        state.tabData = action.payload;
+      })
+      .addCase(getAllPricingsAsync.rejected, (state) => {
+        state.loading = false;
+      })
+
+      // UPDATE All PRICES
+      .addCase(updatedPricingAsync.pending, (state) => {
+        state.createLoading = true;
+      })
+      .addCase(updatedPricingAsync.fulfilled, (state, action) => {
+        state.createLoading = false;
+        state.tabData = state.tabData.map((item) => 
+          item.id === action.payload.data.id ? action.payload.data : item
+        );
+      })
+      .addCase(updatedPricingAsync.rejected, (state) => {
+        state.createLoading = false;
       });
   },
 });

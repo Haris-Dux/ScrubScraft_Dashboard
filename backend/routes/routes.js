@@ -7,6 +7,7 @@ import contactRouter from "./ContactRoutes.js";
 import dashboardRouter from "./DashboardRoutes.js";
 import productDetailsRouter from "./ProductDetailsRoutes.js";
 import picturesrRouter from "./PicturesRoutes.js";
+import pricingRouter from "./PricingRoutes.js";
 
 
 const router = express.Router();
@@ -19,6 +20,7 @@ router.use(contactRouter);
 router.use(dashboardRouter);
 router.use(productDetailsRouter);
 router.use(picturesrRouter);
+router.use(pricingRouter);
 
 
 export default router;

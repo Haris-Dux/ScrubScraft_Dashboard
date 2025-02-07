@@ -149,15 +149,15 @@ export const updateProduct = async (req, res, next) => {
 
     if (colors) {
       const data = JSON.parse(colors);
-      updateQuery = { ...updateQuery, data };
+      updateQuery = { ...updateQuery, colors:data };
     }
     if (sizes) {
-      const data = JSON.parse(colors);
-      updateQuery = { ...updateQuery, data };
+      const data = JSON.parse(sizes);
+      updateQuery = { ...updateQuery, sizes:data };
     }
     if (fabric_type) {
-      const data = JSON.parse(colors);
-      updateQuery = { ...updateQuery, data };
+      const data = JSON.parse(fabric_type);
+      updateQuery = { ...updateQuery, fabric_type:data };
     }
     if (typeof latest === "boolean") {
       updateQuery = { ...updateQuery, latest };

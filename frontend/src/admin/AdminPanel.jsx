@@ -268,7 +268,7 @@ const AdminBody = () => {
                   ) : (
                     <TbListDetails size={20} className="text-black" />
                   )}
-                  <span className="ml-3">Size, Fabric and Color</span>
+                  <span className="ml-3">Prices, Fabric and Color</span>
                 </Link>
               </li>
 

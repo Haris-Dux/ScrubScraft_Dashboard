@@ -7,11 +7,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Loader from "react-loaders";
 import Select from "react-select";
+import {
+  getAllCategoriesAsync,
+  getAllColorsAsync,
+  getAllFabricsAsync,
+} from "../features/ProductDetailsSlice(S,F,C)";
 
 const UpdateProduct = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const categories = ["Men", "Women"];
 
   const { singleProduct, isLoading } = useSelector((state) => state.product);
 
@@ -36,6 +40,10 @@ const UpdateProduct = () => {
     latest: false,
   });
 
+  const [categories, setCategories] = useState([]);
+  const [colorsData, setColorsData] = useState([]);
+  const [fabricData, setFabricData] = useState([]);
+
   useEffect(() => {
     if (singleProduct) {
       setFormdata((prevFormData) => ({
@@ -56,6 +64,33 @@ const UpdateProduct = () => {
     }
   }, [singleProduct]);
 
+  useEffect(() => {
+    dispatch(getAllCategoriesAsync()).then((res) => {
+      if (res?.payload) {
+        setCategories(
+          res.payload.map((item) => ({ value: item.name, label: item.name }))
+        );
+      }
+    });
+
+    dispatch(getAllColorsAsync()).then((res) => {
+      if (res?.payload) {
+        setColorsData(
+          res.payload.map((item) => ({ value: item.value, label: item.label }))
+        );
+      }
+    });
+
+    dispatch(getAllFabricsAsync()).then((res) => {
+      if (res?.payload) {
+        setFabricData(
+          res.payload.map((item) => ({ value: item.name, label: item.name }))
+        );
+      }
+    });
+    console.log("calling");
+  }, []);
+
   const handleChange = (e, fieldName) => {
     if (e.target.type === "file") {
       setFormdata({
@@ -68,15 +103,6 @@ const UpdateProduct = () => {
         [fieldName]: e.target.value,
       });
     }
-  };
-
-  const handleCategoryChange = (e) => {
-    const selectedCategory = e.target.value;
-    setFormdata({
-      ...formdata,
-      category: selectedCategory,
-      subCategory: "",
-    });
   };
 
   const handleCheckChange = (event) => {
@@ -173,25 +199,13 @@ const UpdateProduct = () => {
     }
   };
 
-  const colorsData = [
-    { value: "#008000", label: "Green" },
-    { value: "#FF0000", label: "Red" },
-    { value: "#FFFF00", label: "Yellow" },
-    { value: "#0000FF", label: "Blue" },
-  ];
-
   const sizeData = [
     { value: "Xl", label: "Xl" },
+    { value: "XS", label: "XS" },
+    { value: "S", label: "S" },
     { value: "L", label: "L" },
     { value: "XXL", label: "XXL" },
     { value: "M", label: "M" },
-  ];
-
-  const fabricData = [
-    { value: "Cotton", label: "Cotton" },
-    { value: "Lawn", label: "Lawn" },
-    { value: "Silk", label: "Silk" },
-    { value: "Polyster", label: "Polyster" },
   ];
 
   const customStyles = {
@@ -297,21 +311,24 @@ const UpdateProduct = () => {
                 >
                   Category
                 </label>
-                <select
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                <Select
+               
+                  name="category"
+                  options={categories}
+                  className="block custom-reactSelect w-full"
+                  classNamePrefix="select"
+                  styles={customStyles}
                   id="category"
-                  value={formdata.category}
-                  onChange={handleCategoryChange}
-                >
-                  <option value="" disabled>
-                    Select category
-                  </option>
-                  {categories.map((category) => (
-                    <option key={category} value={category}>
-                      {category}
-                    </option>
-                  ))}
-                </select>
+                  value={categories.filter((category) =>
+                    formdata.category === category.value
+                  )}
+                  onChange={(option) => {
+                    setFormdata({
+                      ...formdata,
+                      category: option.value , 
+                    });
+                  }}
+                />
               </div>
 
               {/* PRODUCT CODE */}

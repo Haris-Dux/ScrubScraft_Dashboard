@@ -14,8 +14,10 @@ import {
   getAllCategoriesAsync,
   getAllColorsAsync,
   getAllFabricsAsync,
+  getAllPricingsAsync,
   updateCategoryAsync,
   updateColorAsync,
+  updatedPricingAsync,
   updateFabricAsync,
 } from "../features/ProductDetailsSlice(S,F,C)";
 import Loader from "react-loaders";
@@ -33,6 +35,7 @@ const ProductDetails = () => {
   const [formData, setFormData] = useState({
     name: "",
     value: "",
+    amount: "",
   });
 
   const handleChange = (e) => {
@@ -75,12 +78,16 @@ const ProductDetails = () => {
         dispatch(getAllColorsAsync());
         break;
 
+      case item === "Prices":
+        dispatch(getAllPricingsAsync());
+        break;
+
       default:
         break;
     }
   };
 
-  const tabDataHeadings = ["Categories", "Colors", "Fabrics"];
+  const tabDataHeadings = ["Categories", "Colors", "Fabrics", "Prices"];
 
   const { tabData, loading, createLoading, deleteLoading } = useSelector(
     (state) => state.ProductDetails
@@ -164,6 +171,7 @@ const ProductDetails = () => {
       ...formData,
       name: data.name || data.label,
       value: data.value || "",
+      amount: data.amount || "",
     });
     setUpdateModalOpen(true);
   };
@@ -175,6 +183,7 @@ const ProductDetails = () => {
     setFormData({
       name: "",
       value: "",
+      amount: "",
     });
   };
 
@@ -184,6 +193,12 @@ const ProductDetails = () => {
     const colorData = {
       label: formData.name,
       value: formData.value,
+      id: Id,
+    };
+
+    const priceData = {
+      name: formData.name,
+      amount: Number(formData.amount),
       id: Id,
     };
 
@@ -199,6 +214,14 @@ const ProductDetails = () => {
 
       case tab === "Colors":
         action = updateColorAsync(colorData);
+        break;
+
+      case tab === "Colors":
+        action = updateColorAsync(colorData);
+        break;
+
+      case tab === "Prices":
+        action = updatedPricingAsync(priceData);
         break;
 
       default:
@@ -263,6 +286,11 @@ const ProductDetails = () => {
                       Name
                     </th>
 
+                    {tab === "Prices" && (
+                      <th className="px-6 py-3" scope="col">
+                        Amount
+                      </th>
+                    )}
                     <th
                       className="px-6 py-3 text-center font-medium"
                       scope="col"
@@ -290,17 +318,22 @@ const ProductDetails = () => {
                             </span>
                           )}
                         </td>
+                        {tab === "Prices" && (
+                          <td className="px-6 py-4">{item?.amount}</td>
+                        )}
                         <td className="px-6 py-4 flex items-center justify-center gap-3">
                           <MdModeEdit
                             onClick={() => updateModalOpen(item)}
                             size={20}
                             className="cursor-pointer text-blue-500"
                           />
-                          <MdDeleteOutline
-                            size={20}
-                            className="cursor-pointer text-red-500"
-                            onClick={() => deleteModalOpen(item.id)}
-                          />
+                          {tab !== "Prices" && (
+                            <MdDeleteOutline
+                              size={20}
+                              className="cursor-pointer text-red-500"
+                              onClick={() => deleteModalOpen(item.id)}
+                            />
+                          )}
                         </td>
                       </tr>
                     ))
@@ -374,6 +407,7 @@ const ProductDetails = () => {
                       onChange={handleChange}
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                       required
+                      readOnly={tab === "Prices"}
                     />
                     {tab === "Colors" && (
                       <div
@@ -397,6 +431,28 @@ const ProductDetails = () => {
                             value: e,
                           }))
                         }
+                      />
+                    </div>
+                  )}
+
+                  {/* AMOUNT */}
+
+                  {tab === "Prices" && (
+                    <div>
+                      <label
+                        htmlFor="amount"
+                        className="block text-sm font-bold text-gray-700 dark:text-gray-300"
+                      >
+                        Amount
+                      </label>
+                      <input
+                        name="amount"
+                        type="text"
+                        placeholder="Enter Amount"
+                        value={formData?.amount}
+                        onChange={handleChange}
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        required
                       />
                     </div>
                   )}
