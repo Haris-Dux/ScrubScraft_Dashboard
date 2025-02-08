@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer";
 
-export async function sendEmail(to, from) {
+export async function sendEmail(to) {
   const { email, g_Otp, message, subject } = to;
 
   let output = ``;
@@ -31,7 +31,7 @@ export async function sendEmail(to, from) {
   });
 
   let mailoptions = {
-    from,
+    from:process.env.EMAIL_AUTH_USER_EMAIL,
     to: email,
     subject: subject,
     html: output,
