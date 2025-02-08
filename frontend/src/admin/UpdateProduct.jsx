@@ -88,7 +88,6 @@ const UpdateProduct = () => {
         );
       }
     });
-    console.log("calling");
   }, []);
 
   const handleChange = (e, fieldName) => {

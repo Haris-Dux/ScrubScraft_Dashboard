@@ -159,8 +159,10 @@ export const updateProduct = async (req, res, next) => {
       const data = JSON.parse(fabric_type);
       updateQuery = { ...updateQuery, fabric_type:data };
     }
-    if (typeof latest === "boolean") {
-      updateQuery = { ...updateQuery, latest };
+  
+    if (latest !== undefined) {
+      const latestBoolean = latest === "true" ? true : false;
+      updateQuery = { ...updateQuery, latest:latestBoolean };
     }
 
     let deletePromises = [];
@@ -264,9 +266,20 @@ export const deleteProduct = async (req, res, next) => {
     if (!product) {
       throw new Error("Product not found");
     }
-
-    await deleteImageFromFirebase(product.image.downloadURL);
-   
+    let deletePromises = [];
+    deletePromises.push(
+      deleteImageFromFirebase(product.images.primary.downloadURL)
+    );
+    deletePromises.push(
+      deleteImageFromFirebase(product.images.image2.downloadURL)
+    );
+    deletePromises.push(
+      deleteImageFromFirebase(product.images.image3.downloadURL)
+    );
+    deletePromises.push(
+      deleteImageFromFirebase(product.images.image4.downloadURL)
+    );
+    await Promise.all(deletePromises);
     await ProductsModel.findByIdAndDelete(id);
     return res
       .status(200)

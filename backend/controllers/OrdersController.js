@@ -1,5 +1,6 @@
 import { OrdersModel } from "../models/OrdersModel.js";
 import { setMongoose } from "../utils/Mongoose.js";
+import { sendEmail } from "../utils/nodemailer.js";
 
 export const updateOrder = async (req, res, next) => {
   try {
@@ -20,6 +21,11 @@ export const updateOrder = async (req, res, next) => {
     if (Object.keys(orderQuery).length === 0)
       throw new Error("No fileds Updated");
     await OrdersModel.findByIdAndUpdate(id, orderQuery);
+    await sendEmail({
+      email:order.email,
+      subject: "Order Update",
+      message: `Your order has been updated to ${orderProgress} status`,
+    })
     return res.status(200).json({ message: "Order Data Updated" });
   } catch (error) {
     return res.status(500).json({ error: error.message });

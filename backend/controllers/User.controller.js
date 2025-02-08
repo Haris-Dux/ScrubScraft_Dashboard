@@ -125,7 +125,7 @@ export const sendResetPasswordOTP = async (req, res, next) => {
         timestamp: new Date(currentDate.getTime()),
       });
     };
-    await sendEmail({ email, g_Otp });
+    await sendEmail({ email, g_Otp, subject:'Reset Password' });
     return res
       .status(200)
       .json({success:true, message: "OTP has been sent to your email", userId: user.id });

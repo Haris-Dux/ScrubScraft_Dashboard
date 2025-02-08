@@ -1,15 +1,24 @@
 import nodemailer from "nodemailer";
 
 export async function sendEmail(to, from) {
-  const { email,g_Otp } = to;
-  let output = `
-  <h3>Password Reset Code</h3>
-  <p>This link will expire in 15 minutes</p>
-  <p> ${g_Otp}</p>
-`;
+  const { email, g_Otp, message, subject } = to;
+
+  let output = ``;
+  if (subject === "Reset Password") {
+    output = `
+    <h3>Password Reset Code</h3>
+    <p>This link will expire in 15 minutes</p>
+    <p> ${g_Otp}</p>
+  `;
+  } else if (subject === 'Order Update') {
+    output = `
+    <h3>Order Update</h3>
+    <p>${message}</p>
+    `;
+  }
 
   let transport = nodemailer.createTransport({
-    service: "gmail",
+    host: "smtp.hostinger.com",
     port: 587,
     secure: false,
     auth: {
@@ -24,10 +33,10 @@ export async function sendEmail(to, from) {
   let mailoptions = {
     from,
     to: email,
-    subject:"Reset Password Code",
+    subject: subject,
     html: output,
   };
- 
+
   transport.sendMail(mailoptions, (error, info) => {
     if (error) {
       return false;
@@ -35,4 +44,3 @@ export async function sendEmail(to, from) {
     return true;
   });
 }
-
