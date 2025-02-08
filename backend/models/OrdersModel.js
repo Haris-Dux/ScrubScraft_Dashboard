@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 import { generateUniqueOrderId } from "../utils/GenerateId.js";
 
-
 const orderSchema = new mongoose.Schema(
   {
     items: {
@@ -29,15 +28,35 @@ const orderSchema = new mongoose.Schema(
       type: String,
       unique: true,
     },
-    orderProgress:{
+    orderProgress: {
       type: String,
-      default:"Pending",
-      enum:['Pending','Delivered','Dispatched','Cancelled']
-    } ,
-    couponUsed: {
-      code: { type: String },
-      discount: { type: Number },
+      default: "Pending",
+      enum: ["Pending", "Delivered", "Dispatched", "Cancelled"],
     },
+    postal_code: {
+      type: String,
+      required: [true, "postal code required"],
+    },
+    city: {
+      type: String,
+      required: [true, "city required"],
+    },
+    area: {
+      type: String,
+      required: [true, "area required"],
+    },
+    province: {
+      type: String,
+      required: [true, "province required"],
+    },
+    email: {
+      type: String,
+      required: [true, "email required"],
+    },
+    delivery_instruction: {
+      type: String,
+      default: "",
+    }
   },
   { timestamps: true }
 );
