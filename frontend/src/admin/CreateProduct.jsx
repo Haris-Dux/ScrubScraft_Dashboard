@@ -8,6 +8,8 @@ import {
   getAllColorsAsync,
   getAllFabricsAsync,
 } from "../features/ProductDetailsSlice(S,F,C)";
+import { MdDeleteOutline } from "react-icons/md";
+import { FaPlus } from "react-icons/fa";
 
 const CreateProduct = () => {
   const dispatch = useDispatch();
@@ -15,6 +17,7 @@ const CreateProduct = () => {
   const [categories, setCategories] = useState([]);
   const [colorsData, setColorsData] = useState([]);
   const [fabricData, setFabricData] = useState([]);
+  const initiRow = { name: "", price: "" };
 
   useEffect(() => {
     dispatch(getAllCategoriesAsync()).then((res) => {
@@ -42,7 +45,6 @@ const CreateProduct = () => {
     });
   }, []);
 
-
   const { createLoading } = useSelector((state) => state.product);
 
   const [formdata, setFormdata] = useState({
@@ -54,7 +56,7 @@ const CreateProduct = () => {
     category: "",
     colors: [],
     sizes: [],
-    fabric_type: [],
+    fabric_type: [initiRow],
     file: null,
     file2: null,
     file3: null,
@@ -141,7 +143,7 @@ const CreateProduct = () => {
   };
 
   const sizeData = [
-    { value: "Xl", label: "Xl" },
+    { value: "XL", label: "XL" },
     { value: "XS", label: "XS" },
     { value: "S", label: "S" },
     { value: "L", label: "L" },
@@ -168,6 +170,31 @@ const CreateProduct = () => {
       ...provided,
       color: "#111827",
     }),
+  };
+
+  const handleAddKeyFabricRow = () => {
+    setFormdata((prev) => ({
+      ...prev,
+      fabric_type: [...prev.fabric_type, initiRow],
+    }));
+  };
+
+  const handleFabricRowChange = (e, index) => {
+    const { value,name } = e.target;
+
+    setFormdata((prev) => ({
+      ...prev,
+      fabric_type: prev.fabric_type.map((item, idx) =>
+        idx === index ? { ...item, [name]: value } : item
+      ),
+    }));
+  };
+
+  const handleDeleteFabricRow = (index) => {
+    setFormdata((prev) => ({
+      ...prev,
+      fabric_type: [...prev.fabric_type.filter((_, idx) => idx !== index)],
+    }));
   };
 
   return (
@@ -342,30 +369,70 @@ const CreateProduct = () => {
               </div>
 
               {/* Fabrics */}
-              <div>
-                <label
-                  className="block mb-1.5 text-sm font-medium text-gray-900 dark:text-white"
-                  htmlFor="fabrics"
-                >
-                  Fabric Types
+              <div className="mb-4">
+                <label className="block mb-1.5 text-sm font-medium text-gray-900 dark:text-white">
+                  Fabrics And Prices
                 </label>
-                <Select
-                  isMulti
-                  name="fabric_type"
-                  options={fabricData}
-                  className="block custom-reactSelect w-full"
-                  classNamePrefix="select"
-                  styles={customStyles}
-                  value={fabricData.filter((fabric) =>
-                    formdata.fabric_type.includes(fabric.value)
-                  )}
-                  onChange={(option) => {
-                    setFormdata({
-                      ...formdata,
-                      fabric_type: option.map((item) => item.value),
-                    });
-                  }}
-                />
+
+                {formdata.fabric_type.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex item-center justify-center gap-2 "
+                  >
+                    <Select
+                      type="text"
+                      name="name"
+                      options={fabricData}
+                      value={fabricData.find(
+                        (option) => option.value === item.name
+                      )}
+                      onChange={(selectedOption) =>
+                        handleFabricRowChange(
+                          {
+                            target: {
+                              name: "name",
+                              value: selectedOption.value,
+                            },
+                          },
+                          index
+                        )
+                      }
+                      className="block custom-reactSelect mb-1 w-full"
+                      classNamePrefix="select"
+                      styles={customStyles}
+                      required
+                    />
+                    <input
+                      type="text"
+                      name="price"
+                      placeholder="Fabric price"
+                      value={item.price}
+                      onChange={(e) => handleFabricRowChange(e, index)}
+                      className="bg-gray-50 border border-gray-300 mb-1 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full"
+                      required
+                    />
+
+                    {formdata?.fabric_type.length > 1 ? (
+                      <MdDeleteOutline
+                        size={40}
+                        onClick={() => handleDeleteFabricRow(index)}
+                        className="cursor-pointer text-red-600"
+                      />
+                    ) : (
+                      <div className="w-[40px] h-[40px]"></div>
+                    )}
+
+                    {index === 0 ? (
+                      <FaPlus
+                        onClick={() => handleAddKeyFabricRow()}
+                        size={40}
+                        className=" cursor-pointer text-black"
+                      />
+                    ) : (
+                      <div className="w-[40px] h-[40px]"></div>
+                    )}
+                  </div>
+                ))}
               </div>
 
               {/* DESC */}

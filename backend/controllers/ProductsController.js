@@ -19,8 +19,13 @@ export const addProduct = async (req, res, next) => {
     } = req.body;
 
     const colors = JSON.parse(req.body.colors);
-    const fabric_type = JSON.parse(req.body.fabric_type);
+    const fabric_type = JSON.parse(req.body.fabric_type).map(item => ({
+      ...item,
+      price: parseFloat(item.price) || 0 
+    }));
     const sizes = JSON.parse(req.body.sizes);
+
+    console.log('fabric_type',fabric_type);
 
 
     await verifyrequiredparams(req.body, [
