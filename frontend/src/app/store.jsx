@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import authSlice from "../features/authSlice";
+import authSlice, { userSessionAsync } from "../features/authSlice";
 import productSlice from "../features/productSlice";
 import orderSlice from "../features/orderSlice";
 import reviewSlice from "../features/reviewSlice";
@@ -20,3 +20,6 @@ export const store = configureStore({
     dashboard: DashBoardSlice,
   },
 });
+
+store.dispatch(userSessionAsync());
+

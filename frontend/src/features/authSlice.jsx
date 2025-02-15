@@ -111,7 +111,7 @@ export const userSessionAsync = createAsyncThunk(
   "user/userSession",
   async () => {
     try {
-      const response = await axios.get(userSession);
+      const response = await axios.get(userSession,{withCredentials:true});
       return response.data;
     } catch (error) {
       throw new Error(error)
@@ -159,6 +159,10 @@ const authSlice = createSlice({
       .addCase(userSessionAsync.fulfilled, (state, action) => {
         state.sessionLoading = false;
         state.user = action.payload;
+      })
+      .addCase(userSessionAsync.rejected, (state, action) => {
+        state.sessionLoading = false;
+        state.user = null;
       })
 
       // SEND OTP ADD CASE

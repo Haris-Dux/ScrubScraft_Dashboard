@@ -12,9 +12,6 @@ import "./Loader.scss";
 import Dashboard from "./admin/Dashboard";
 import ViewOrders from "./admin/ViewOrders";
 import OrderDetailPage from "./admin/OrderDetailPage";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { userSessionAsync } from "./features/authSlice";
 import SendOtp from "./auth/SendOtp";
 import VerifyOtp from "./auth/VerifyOtp";
 import Reviews from "./admin/Reviews";
@@ -22,18 +19,15 @@ import ResetPassword from "./auth/ResetPassword";
 import ContactQueries from "./admin/ContactQueries";
 import ProductDetails from "./admin/ProductDetails(S,F,C)";
 import Pictures from "./admin/Pictures";
+import {UserProtected } from "./RouteGuards/ProtectedRouting";
 
 function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(userSessionAsync());
-  });
 
   return (
     <>
       <BrowserRouter>
         <Routes>
+
           {/* AUTH ROUTE */}
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
@@ -43,7 +37,7 @@ function App() {
           <Route path="/reset" element={<ResetPassword />} />
 
           {/* ADMIN ROUTE */}
-          <Route path="/admin" element={<AdminPanel />}>
+          <Route path="/admin" element={<UserProtected><AdminPanel /></UserProtected>}>
             <Route index element={<Dashboard />} />
             <Route path="/admin/all_product" element={<AllProducts />} />
             <Route path="create_product" element={<CreateProduct />} />
