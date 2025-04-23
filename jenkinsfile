@@ -100,7 +100,7 @@ stage('Deploy to VPS') {
                          sudo docker run -d --name scrub-admin-backend --env-file /root/scrubScraft/env-files/.env -p ${BACKEND_PORT}:5000 ${env.DOCKER_IMAGE_BACKEND}
 
                         echo "Restarting Nginx"
-                         systemctl restart nginx
+                        sudo systemctl restart nginx
                     
                 """
             
