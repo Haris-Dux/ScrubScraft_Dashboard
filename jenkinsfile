@@ -96,8 +96,8 @@ stage('Deploy to VPS') {
                         docker rm scrub-admin-backend || true
 
                         echo "Running new containers"
-                         docker run -d --name scrub-admin-frontend -p ${FRONTEND_PORT}:80 ${env.DOCKER_IMAGE_FRONTEND}
-                         docker run -d --name scrub-admin-backend --env-file /root/scrubScraft/env-files/.env -p ${BACKEND_PORT}:5000 ${env.DOCKER_IMAGE_BACKEND}
+                         sudo docker run -d --name scrub-admin-frontend -p ${FRONTEND_PORT}:80 ${env.DOCKER_IMAGE_FRONTEND}
+                         sudo docker run -d --name scrub-admin-backend --env-file /root/scrubScraft/env-files/.env -p ${BACKEND_PORT}:5000 ${env.DOCKER_IMAGE_BACKEND}
 
                         echo "Restarting Nginx"
                         sudo systemctl restart nginx
