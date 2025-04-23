@@ -10,9 +10,9 @@ const initialState = {
 };
 
 //API URL
-const getAllOrdersUrl = `/orders/getAllOrders`;
-const updateOrdersUrl = "/orders/updateOrder";
-const getOrderByIdUrl = "/orders/getOrderById";
+const getAllOrdersUrl  = `http://localhost:8000/orders/getAllOrders`;
+const updateOrdersUrl  = "http://localhost:8000/orders/updateOrder";
+const getOrderByIdUrl  = "http://localhost:8000/orders/getOrderById";
 
 export const getAllOrdersAsync = createAsyncThunk(
   "Orders/getallOrders",

@@ -11,9 +11,9 @@ const initialState = {
 };
 
 //API URL
-const getAllSizePicturesUrl = `/picturesrRouter/getAllSizePictures`;
-const createSizePicturesUrl = `/picturesrRouter/createSizePicture`;
-const deleteSizePicturesUrl = `/picturesrRouter/deleteSizePicture`;
+const getAllSizePicturesUrl  = `http://localhost:8000/picturesrRouter/getAllSizePictures`;
+const createSizePicturesUrl  = `http://localhost:8000/picturesrRouter/createSizePicture`;
+const deleteSizePicturesUrl  = `http://localhost:8000/picturesrRouter/deleteSizePicture`;
 
 export const getAllPicturesAsync = createAsyncThunk(
   "pictures/getallPictures",

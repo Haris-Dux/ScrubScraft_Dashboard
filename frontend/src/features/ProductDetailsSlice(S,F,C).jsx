@@ -11,24 +11,23 @@ const initialState = {
 };
 
 //API URL
-const createCategoryUrl = "/productDetails/createCategory";
-const getAllCategoriesUrl =
-  "/productDetails/getAllCategories";
-const updateCategoryUrl = "/productDetails/updateCategory";
-const deleteCategoryUrl = "/productDetails/deleteCategory";
+const createCategoryUrl  = "http://localhost:8000/productDetails/createCategory";
+const getAllCategoriesUrl  = "http://localhost:8000/productDetails/getAllCategories";
+const updateCategoryUrl  = "http://localhost:8000/productDetails/updateCategory";
+const deleteCategoryUrl  = "http://localhost:8000/productDetails/deleteCategory";
 
-const createColorUrl = "/productDetails/createColor";
-const getAllColorsUrl = "/productDetails/getAllColors";
-const updateColorUrl = "/productDetails/updateColor";
-const deleteColorUrl = "/productDetails/deleteColor";
+const createColorUrl  = "http://localhost:8000/productDetails/createColor";
+const getAllColorsUrl  = "http://localhost:8000/productDetails/getAllColors";
+const updateColorUrl  = "http://localhost:8000/productDetails/updateColor";
+const deleteColorUrl  = "http://localhost:8000/productDetails/deleteColor";
 
-const createFabricUrl = "/productDetails/createFabric";
-const getAllFabricsUrl = "/productDetails/getAllFabrics";
-const updateFabricUrl = "/productDetails/updateFabric";
-const deleteFabricUrl = "/productDetails/deleteFabric";
+const createFabricUrl  = "http://localhost:8000/productDetails/createFabric";
+const getAllFabricsUrl  = "http://localhost:8000/productDetails/getAllFabrics";
+const updateFabricUrl  = "http://localhost:8000/productDetails/updateFabric";
+const deleteFabricUrl  = "http://localhost:8000/productDetails/deleteFabric";
 
-const getAllPricingsUrl = "/pricing/getPricing";
-const updatedPricingUrl = "/pricing/updatePricing";
+const getAllPricingsUrl  = "http://localhost:8000/pricing/getPricing";
+const updatedPricingUrl  = "http://localhost:8000/pricing/updatePricing";
 
 //PRICINGS
 export const getAllPricingsAsync = createAsyncThunk(

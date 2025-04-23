@@ -9,8 +9,8 @@ const initialState = {
 };
 
 //API URL
-const getAllReviewsUrl = `/reviews/getAllReviews`;
-const deleteReviewsUrl = `/reviews/deleteReview`;
+const getAllReviewsUrl  = `http://localhost:8000/reviews/getAllReviews`;
+const deleteReviewsUrl  = `http://localhost:8000/reviews/deleteReview`;
 
 export const getAllReviewsAsync = createAsyncThunk(
   "reviews/getallreviews",

@@ -16,6 +16,7 @@ export const addProduct = async (req, res, next) => {
       product_code,
       category,
       latest,
+      trouserOptions
     } = req.body;
 
     const colors = JSON.parse(req.body.colors);
@@ -24,9 +25,6 @@ export const addProduct = async (req, res, next) => {
       price: parseFloat(item.price) || 0 
     }));
     const sizes = JSON.parse(req.body.sizes);
-
-    console.log('fabric_type',fabric_type);
-
 
     await verifyrequiredparams(req.body, [
       "name",
@@ -40,6 +38,15 @@ export const addProduct = async (req, res, next) => {
       "fabric_type",
       "latest",
     ]);
+
+    if(trouserOptions){
+      trouserOptions.forEach((item) => {
+        const {name,price} = item;
+        if(!name || !price) {
+          throw new Error(`${name} trouser option must have a price`);
+        }
+      })
+    }
 
     if (parseFloat(price) <= 0) {
       throw new Error("Price must be greater than 0");
@@ -89,6 +96,7 @@ export const addProduct = async (req, res, next) => {
       colors,
       sizes,
       fabric_type,
+      trouserOptions
     });
 
     return res.status(200).json({success: true, message: "Product Added Successfully" });

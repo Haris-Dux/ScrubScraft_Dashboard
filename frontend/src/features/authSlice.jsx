@@ -14,13 +14,13 @@ const initialState = {
 };
 
 //API URL
-const signupUrl = "/users/signup";
-const loginUrl = "/users/login";
-const logoutUrl = "/users/logout";
-const verifyOtpUrl = "/users/verifyOtp";
-const sendResetPasswordOTPUrl = "/users/sendResetPasswordOTP";
-const updatePasswordUrl = "/users/updatePassword";
-const userSession = "/users/persistUserSession";
+const signupUrl  = "http://localhost:8000/users/signup";
+const loginUrl  = "http://localhost:8000/users/login";
+const logoutUrl  = "http://localhost:8000/users/logout";
+const verifyOtpUrl  = "http://localhost:8000/users/verifyOtp";
+const sendResetPasswordOTPUrl  = "http://localhost:8000/users/sendResetPasswordOTP";
+const updatePasswordUrl  = "http://localhost:8000/users/updatePassword";
+const userSession  = "http://localhost:8000/users/persistUserSession";
 
 // Register Function
 export const createuserAsync = createAsyncThunk(

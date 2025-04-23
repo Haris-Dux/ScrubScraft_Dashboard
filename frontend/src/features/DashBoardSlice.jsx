@@ -12,10 +12,10 @@ const initialState = {
 };
 
 //API URL
-const getSalesStatisticsUrl = `/dashboard/getSalesStatistics`;
-const getmonthlyOrdersUrl = `/dashboard/getMonthlyOrdersDifference`;
-const getPercentageOfOrderProgressUrl = `/dashboard/getPercentageOfOrderProgress`;
-const getOrderCountsByMonthsUrl = `/dashboard/getOrderCountsByMonth`;
+const getSalesStatisticsUrl  = `http://localhost:8000/dashboard/getSalesStatistics`;
+const getmonthlyOrdersUrl  = `http://localhost:8000/dashboard/getMonthlyOrdersDifference`;
+const getPercentageOfOrderProgressUrl  = `http://localhost:8000/dashboard/getPercentageOfOrderProgress`;
+const getOrderCountsByMonthsUrl  = `http://localhost:8000/dashboard/getOrderCountsByMonth`;
 
 export const SalesStatisticsAsync = createAsyncThunk(
   "dashboard/SalesStatistics",
