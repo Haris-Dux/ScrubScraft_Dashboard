@@ -26,7 +26,7 @@ pipeline {
                          env.VITE_API_URL = 'http://localhost:8000'
                     } else if (branchName == 'develop') {
                         echo "Branch name: ${branchName}"
-                          error "Unrecognized branch: ${env.BRANCH_NAME}. Only 'main' branch is supported."
+                          error "Unrecognized branch: ${env.BRANCH_NAME}. Only main branch is supported."
                     }
                     env.DOCKER_IMAGE_FRONTEND = "${APP_NAME}:frontend-${BUILD_NUMBER}"
                     env.DOCKER_IMAGE_BACKEND = "${APP_NAME}:backend-${BUILD_NUMBER}"
