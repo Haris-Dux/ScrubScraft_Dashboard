@@ -23,7 +23,7 @@ pipeline {
                         echo "Branch name: ${branchName}"
                          env.FRONTEND_PORT = '5173'
                          env.BACKEND_PORT = '8000'
-                         env.VITE_API_URL = 'http://localhost:8000'
+                         env.VITE_API_URL = 'http://46.202.128.126:8000'
                     } else if (branchName == 'develop') {
                         echo "Branch name: ${branchName}"
                           error "Unrecognized branch: ${env.BRANCH_NAME}. Only main branch is supported."
@@ -70,7 +70,7 @@ pipeline {
                     echo "Building Docker Images"
 
                        echo "Building frontend image"
-                            docker build -t ${env.DOCKER_IMAGE_FRONTEND} -f frontend/Dockerfile frontend
+                            docker build --build-arg API_URL=${env.VITE_API_URL} -t ${env.DOCKER_IMAGE_FRONTEND} -f frontend/Dockerfile frontend
                                 
                             
                         echo "Building backend image"

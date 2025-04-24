@@ -4,7 +4,9 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUserAsync } from "../features/authSlice";
 import { TbListDetails } from "react-icons/tb";
+import { CgSoftwareDownload } from "react-icons/cg";
 import { AiOutlinePicture } from "react-icons/ai";
+import { downloadProductsCsvFileAsync } from "../features/DashBoardSlice";
 
 const AdminBody = () => {
   const dispatch = useDispatch();
@@ -73,6 +75,10 @@ const AdminBody = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
+  const handleDownloadCsvFile = () => {
+    dispatch(downloadProductsCsvFileAsync())
+  }
+
   return (
     <>
       <div className="antialiased bg-gray-50 dark:bg-gray-900">
@@ -130,6 +136,15 @@ const AdminBody = () => {
 
             {/* ---------------- NAVBAR - RIGHT ---------------- */}
             <div className="flex items-center gap-2 lg:order-2">
+
+            <button
+                onClick={handleDownloadCsvFile}
+                className=" bg-gray-800 flex items-center gap-2 text-white px-3 py-2.5 rounded-lg"
+              >
+               Download CSV
+               <CgSoftwareDownload />
+              </button>
+
               <button
                 onClick={handleThemeChange}
                 className=" text-gray-800 dark:text-white px-3 py-2.5 rounded-lg"

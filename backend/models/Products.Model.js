@@ -70,6 +70,10 @@ const productsSchema = new mongoose.Schema(
         price: {
           type: Number
         },
+        selected : {
+          type:Boolean,
+          default: false,
+        }
       },
     ],
     latest: {

@@ -238,6 +238,14 @@ const OrderDetailPage = () => {
                                 {items?.name_engraving?.position} )
                               </p>
                             )}
+                             {items?.trouserOption && (
+                              <p className="text-sm dark:text-white leading-none text-gray-800">
+                                <span className="dark:text-gray-400 font-semibold text-gray-800">
+                                  Trouser Option:{" "}
+                                </span>{" "}
+                                {items?.trouserOption}
+                              </p>
+                            )}
                           </div>
                         </div>
                         <div className="flex justify-between space-x-8 items-start w-full">
@@ -293,7 +301,7 @@ const OrderDetailPage = () => {
                       <p className="text-base dark:text-white font-semibold leading-4 text-gray-800">
                         Total
                       </p>
-                      <p className="text-base dark:text-gray-300 font-semibold leading-4 text-gray-600">
+                      <p className="text-basedata?.delivery_instruction  dark:text-gray-300 font-semibold leading-4 text-gray-600">
                         Rs. {data?.totalAmount}
                       </p>
                     </div>
@@ -382,7 +390,7 @@ const OrderDetailPage = () => {
                           Delivery Instruction
                         </p>
                         <p className="w-48 lg:w-full dark:text-gray-300 xl:w-48 text-center md:text-left text-sm leading-5 text-gray-600">
-                          {data?.delivery_instruction ?? "--"}
+                          {data?.delivery_instruction ? data?.delivery_instruction : "--"}
                         </p>
                       </div>
                     </div>

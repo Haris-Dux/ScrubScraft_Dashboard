@@ -15,8 +15,7 @@ export const addProduct = async (req, res, next) => {
       sale_price,
       product_code,
       category,
-      latest,
-      trouserOptions
+      latest
     } = req.body;
 
     const colors = JSON.parse(req.body.colors);
@@ -39,14 +38,18 @@ export const addProduct = async (req, res, next) => {
       "latest",
     ]);
 
-    if(trouserOptions){
-      trouserOptions.forEach((item) => {
-        const {name,price} = item;
-        if(!name || !price) {
-          throw new Error(`${name} trouser option must have a price`);
+    const trousersData = JSON.parse(req.body.trouserOptions);
+   
+    trousersData.forEach((item) => {
+        if(item.selected) {
+          const {name,price} = item;
+          if(!name || !price) {
+            throw new Error(`${name} option must have a price`);
+          }
         }
+      
       })
-    }
+    
 
     if (parseFloat(price) <= 0) {
       throw new Error("Price must be greater than 0");
@@ -96,7 +99,7 @@ export const addProduct = async (req, res, next) => {
       colors,
       sizes,
       fabric_type,
-      trouserOptions
+      trouserOptions:trousersData
     });
 
     return res.status(200).json({success: true, message: "Product Added Successfully" });
@@ -118,7 +121,8 @@ export const updateProduct = async (req, res, next) => {
       latest,
       colors,
       fabric_type,
-      sizes
+      sizes,
+      trouserOptions
     } = req.body;
 
 
@@ -177,6 +181,25 @@ export const updateProduct = async (req, res, next) => {
       const latestBoolean = latest === "true" ? true : false;
       updateQuery = { ...updateQuery, latest:latestBoolean };
     }
+
+    if(trouserOptions){
+      const data = JSON.parse(req.body.trouserOptions);
+
+      data.forEach((item) => {
+        if(item.selected) {
+          const {name,price} = item;
+          if(!name || !price) {
+            throw new Error(`${name} option must have a price`);
+          }
+        }
+      
+      })
+
+      updateQuery = { ...updateQuery, trouserOptions:data };
+
+    }
+   
+    
 
     let deletePromises = [];
     let imageData = { ...product.images };

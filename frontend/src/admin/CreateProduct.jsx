@@ -62,7 +62,21 @@ const CreateProduct = () => {
     file3: null,
     file4: null,
     latest: false,
+    trouserOptions:[
+      {
+        selected:false,
+        name:"trouser",
+        price:""
+      },
+      {
+        selected:false,
+        name:"jogerPent",
+        price:""
+      }
+    ]
   });
+
+  console.log("data",formdata)
 
   const handleCategoryChange = (e) => {
     const selectedCategory = e.target.value;
@@ -115,6 +129,7 @@ const CreateProduct = () => {
     formData.append("colors", JSON.stringify(formdata.colors));
     formData.append("sizes", JSON.stringify(formdata.sizes));
     formData.append("fabric_type", JSON.stringify(formdata.fabric_type));
+    formData.append("trouserOptions", JSON.stringify(formdata.trouserOptions));
 
     try {
       dispatch(createProductAsync(formData)).then((res) => {
@@ -134,6 +149,18 @@ const CreateProduct = () => {
             file3: null,
             file4: null,
             latest: false,
+            trouserOptions:[
+              {
+                selected:false,
+                name:"trouser",
+                price:""
+              },
+              {
+                selected:false,
+                name:"jogerPent",
+                price:""
+              }
+            ]
           });
         }
       });
@@ -473,6 +500,89 @@ const CreateProduct = () => {
                   Latest Product
                 </label>
               </div>
+
+              {/* TROUSER OPTIONS */}
+
+              <div className="flex items-center gap-3">
+
+                {/* TROUSER OPTION */}
+
+                <input
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  defaultValue=""
+                  id="default-checkbox"
+                  type="checkbox"
+                  name="latest"
+                  checked={formdata.trouserOptions[0].selected}
+                  onChange={(e) =>
+                    setFormdata({ ...formdata, trouserOptions:formdata.trouserOptions.map((option) => 
+                    option.name === "trouser" ? {...option, selected:e.target.checked} : option
+                    ) })
+                  }
+                />
+                <label
+                  className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  htmlFor="default-checkbox"
+                >
+                  Trouser 
+                </label>
+                <input
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600   p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  id="price"
+                  name="price"
+                  placeholder="Enter Price"
+                  type="number"
+                  value={formdata.trouserOptions[0].price}
+                  required={!formdata.trouserOptions[0].selected}
+                  disabled={!formdata.trouserOptions[0].selected}
+                  onChange={(e) =>
+                    setFormdata({ ...formdata, trouserOptions:formdata.trouserOptions.map((option) => 
+                    option.name === "trouser" ? {...option, price:Number(e.target.value)} : option
+                    ) })
+                  }
+                />
+
+
+                 {/* JOGER OPTION */}
+
+                <input
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  defaultValue=""
+                  id="default-checkbox"
+                  placeholder="Enter Price"
+                  type="checkbox"
+                  name="latest"
+                  checked={formdata.trouserOptions[1].selected}
+                  onChange={(e) =>
+                    setFormdata({ ...formdata, trouserOptions:formdata.trouserOptions.map((option) => 
+                    option.name === "jogerPent" ? {...option, selected:e.target.checked} : option
+                    ) })
+                  }
+                />
+                <label
+                  className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  htmlFor="default-checkbox"
+                >
+                 Joger Pent
+                </label>
+
+                <input
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600  p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  id="price"
+                  name="price"
+                  placeholder="Enter Price"
+                  type="number"
+                  value={formdata.trouserOptions[1].price}
+                  required={!formdata.trouserOptions[1].selected}
+                  disabled={!formdata.trouserOptions[1].selected}
+                  onChange={(e) =>
+                    setFormdata({ ...formdata, trouserOptions:formdata.trouserOptions.map((option) => 
+                    option.name === "jogerPent" ? {...option, price: Number(e.target.value)} : option
+                    ) })
+                  }
+                />
+              </div>
+
             </div>
 
             {/* IMAGES */}

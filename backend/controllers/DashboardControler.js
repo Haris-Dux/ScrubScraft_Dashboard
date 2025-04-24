@@ -1,4 +1,7 @@
 import { OrdersModel } from "../models/OrdersModel.js";
+import { ProductsModel } from "../models/Products.Model.js";
+import { stringify } from 'csv-stringify';
+
 
 export const getPercentageOfOrderProgress = async (req, res, next) => {
   try {
@@ -147,3 +150,48 @@ export const getOrderCountsByMonth = async (req, res, next) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+export const downloadProductsCsvFile = async (req, res, next) => {
+try {
+  const productsData = await ProductsModel.find();
+
+  if (!productsData.length) {
+    throw new Error("No products data")
+  };
+
+   const formattedData = productsData.map(p => ({
+    id:p._id.toString(),
+    title: p.name,
+    description: p.description,
+    availability:'In Stock',
+    price:p.sale_price > 0 ? p.sale_price : p.price,
+    image_link:p.images.primary.downloadURL,
+    google_product_category:'Apparel & Accessories > Clothing',
+    fb_product_category:'Clothing & Accessories > Clothing',
+    quantity_to_sell_on_facebook:1000
+   
+  }));
+
+  res.setHeader('Content-Type', 'text/csv');
+  res.setHeader('Content-Disposition', 'attachment; filename="products.csv"');
+
+  stringify(formattedData, {
+    header: true,
+    columns: [
+      { key: 'id', header: 'id' },
+      { key: 'title', header: 'title' },
+      { key: 'description', header: 'description' },
+      { key: 'availability', header: 'availability' },
+      { key: 'price', header: 'price' },
+      { key: 'image_link', header: 'image_link' },
+      { key: 'google_product_category', header: 'google_product_category' },
+      { key: 'fb_product_category', header: 'fb_product_category' },
+      { key: 'quantity_to_sell_on_facebook', header: 'quantity_to_sell_on_facebook1' },
+    ],
+  }).pipe(res);
+
+  
+} catch (error) {
+  return res.status(400).json({error:error.message})
+}
+}

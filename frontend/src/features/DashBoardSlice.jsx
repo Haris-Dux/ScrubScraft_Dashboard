@@ -1,6 +1,7 @@
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 // INITIAL STATE
 const initialState = {
@@ -16,6 +17,8 @@ const getSalesStatisticsUrl  = `http://localhost:8000/dashboard/getSalesStatisti
 const getmonthlyOrdersUrl  = `http://localhost:8000/dashboard/getMonthlyOrdersDifference`;
 const getPercentageOfOrderProgressUrl  = `http://localhost:8000/dashboard/getPercentageOfOrderProgress`;
 const getOrderCountsByMonthsUrl  = `http://localhost:8000/dashboard/getOrderCountsByMonth`;
+const downloadProductsCsvFileUrl  = `http://localhost:8000/dashboard/downloadProductsCsvFile`;
+
 
 export const SalesStatisticsAsync = createAsyncThunk(
   "dashboard/SalesStatistics",
@@ -64,6 +67,31 @@ export const getOrderCountsByMonthsAsync = createAsyncThunk(
     }
   }
 );
+
+export const downloadProductsCsvFileAsync = createAsyncThunk(
+  "dashboard/DownloadCsv",
+  async () => {
+    try {
+      const response = await axios.get(downloadProductsCsvFileUrl, {
+        responseType: "blob", 
+      });
+
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'products.csv';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.URL.revokeObjectURL(url);
+
+      return "File downloaded successfully";
+    } catch (error) {
+      toast.error(error.response.data.error);
+    }
+  }
+);
+
 
 
 const dashboardSlice = createSlice({

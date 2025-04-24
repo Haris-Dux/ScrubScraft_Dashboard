@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  downloadProductsCsvFile,
     getMonthlyOrdersDifference,
     getOrderCountsByMonth,
   getPercentageOfOrderProgress,
@@ -14,5 +15,7 @@ dashboardRouter.post("/dashboard/getPercentageOfOrderProgress",AdminOnly, getPer
 dashboardRouter.post("/dashboard/getSalesStatistics",AdminOnly, getSalesStatistics);
 dashboardRouter.post("/dashboard/getMonthlyOrdersDifference",AdminOnly, getMonthlyOrdersDifference);
 dashboardRouter.post("/dashboard/getOrderCountsByMonth",AdminOnly, getOrderCountsByMonth);
+dashboardRouter.get("/dashboard/downloadProductsCsvFile", downloadProductsCsvFile);
+
 
 export default dashboardRouter;

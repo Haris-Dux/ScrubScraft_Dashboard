@@ -10,7 +10,6 @@ const ViewOrders = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredOrders, setFilteredOrders] = useState([]);
 
   const dropdownRef = useRef(null);
 
