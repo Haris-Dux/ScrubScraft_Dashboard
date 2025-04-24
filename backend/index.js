@@ -11,10 +11,12 @@ import router from "./routes/routes.js";
 const app = express();
 app.use(cookieParser());
 app.use(cors({
-    credentials:true,
-    origin:['http://localhost:5173','https://scrubscraft.shop', 'https://admin.scrubscraft.shop',
-      'https://api.admin.scrubscraft.shop']
-  }));
+  credentials: true,
+  origin: (origin, callback) => {
+    console.log("CORS request from:", origin);
+    callback(null, true); 
+  }
+}));
 
 app.use(express.json({limit:'100mb'}));
 const MongoDBStoreSession = MongoDBStore(session);
