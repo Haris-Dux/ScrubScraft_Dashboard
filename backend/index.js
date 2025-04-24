@@ -12,7 +12,8 @@ const app = express();
 app.use(cookieParser());
 app.use(cors({
     credentials:true,
-    origin:['http://localhost:5173','https://scrubscraft.shop']
+    origin:['http://localhost:5173','https://scrubscraft.shop', 'https://admin.scrubscraft.shop',
+      'https://api.admin.scrubscraft.shop']
   }));
 
 app.use(express.json({limit:'100mb'}));
@@ -37,14 +38,6 @@ app.use(session({
   }));
 
   app.use("", router);
-
-
-// const root = path.resolve();
-// app.use(express.static(path.join(root, 'dist')));
-
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(root, 'dist/index.html'));
-// });
 
 
 mongoose
