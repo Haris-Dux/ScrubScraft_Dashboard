@@ -11,9 +11,9 @@ const initialState = {
 };
 
 //API URL
-const getAllSizePicturesUrl  = `http://46.202.128.126:8000/picturesrRouter/getAllSizePictures`;
-const createSizePicturesUrl  = `http://46.202.128.126:8000/picturesrRouter/createSizePicture`;
-const deleteSizePicturesUrl  = `http://46.202.128.126:8000/picturesrRouter/deleteSizePicture`;
+const getAllSizePicturesUrl  = `https://api.admin.scrubscraft.shop/picturesrRouter/getAllSizePictures`;
+const createSizePicturesUrl  = `https://api.admin.scrubscraft.shop/picturesrRouter/createSizePicture`;
+const deleteSizePicturesUrl  = `https://api.admin.scrubscraft.shop/picturesrRouter/deleteSizePicture`;
 
 export const getAllPicturesAsync = createAsyncThunk(
   "pictures/getallPictures",

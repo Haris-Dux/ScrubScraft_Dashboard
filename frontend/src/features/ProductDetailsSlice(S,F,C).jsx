@@ -11,23 +11,23 @@ const initialState = {
 };
 
 //API URL
-const createCategoryUrl  = "http://46.202.128.126:8000/productDetails/createCategory";
-const getAllCategoriesUrl  = "http://46.202.128.126:8000/productDetails/getAllCategories";
-const updateCategoryUrl  = "http://46.202.128.126:8000/productDetails/updateCategory";
-const deleteCategoryUrl  = "http://46.202.128.126:8000/productDetails/deleteCategory";
+const createCategoryUrl  = "https://api.admin.scrubscraft.shop/productDetails/createCategory";
+const getAllCategoriesUrl  = "https://api.admin.scrubscraft.shop/productDetails/getAllCategories";
+const updateCategoryUrl  = "https://api.admin.scrubscraft.shop/productDetails/updateCategory";
+const deleteCategoryUrl  = "https://api.admin.scrubscraft.shop/productDetails/deleteCategory";
 
-const createColorUrl  = "http://46.202.128.126:8000/productDetails/createColor";
-const getAllColorsUrl  = "http://46.202.128.126:8000/productDetails/getAllColors";
-const updateColorUrl  = "http://46.202.128.126:8000/productDetails/updateColor";
-const deleteColorUrl  = "http://46.202.128.126:8000/productDetails/deleteColor";
+const createColorUrl  = "https://api.admin.scrubscraft.shop/productDetails/createColor";
+const getAllColorsUrl  = "https://api.admin.scrubscraft.shop/productDetails/getAllColors";
+const updateColorUrl  = "https://api.admin.scrubscraft.shop/productDetails/updateColor";
+const deleteColorUrl  = "https://api.admin.scrubscraft.shop/productDetails/deleteColor";
 
-const createFabricUrl  = "http://46.202.128.126:8000/productDetails/createFabric";
-const getAllFabricsUrl  = "http://46.202.128.126:8000/productDetails/getAllFabrics";
-const updateFabricUrl  = "http://46.202.128.126:8000/productDetails/updateFabric";
-const deleteFabricUrl  = "http://46.202.128.126:8000/productDetails/deleteFabric";
+const createFabricUrl  = "https://api.admin.scrubscraft.shop/productDetails/createFabric";
+const getAllFabricsUrl  = "https://api.admin.scrubscraft.shop/productDetails/getAllFabrics";
+const updateFabricUrl  = "https://api.admin.scrubscraft.shop/productDetails/updateFabric";
+const deleteFabricUrl  = "https://api.admin.scrubscraft.shop/productDetails/deleteFabric";
 
-const getAllPricingsUrl  = "http://46.202.128.126:8000/pricing/getPricing";
-const updatedPricingUrl  = "http://46.202.128.126:8000/pricing/updatePricing";
+const getAllPricingsUrl  = "https://api.admin.scrubscraft.shop/pricing/getPricing";
+const updatedPricingUrl  = "https://api.admin.scrubscraft.shop/pricing/updatePricing";
 
 //PRICINGS
 export const getAllPricingsAsync = createAsyncThunk(

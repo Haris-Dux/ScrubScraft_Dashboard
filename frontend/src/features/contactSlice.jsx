@@ -9,7 +9,7 @@ const initialState = {
 };
 
 //API URL
-const getAllContactQueriesUrl  = `http://46.202.128.126:8000/contact/getAllContacts`;
+const getAllContactQueriesUrl  = `https://api.admin.scrubscraft.shop/contact/getAllContacts`;
 
 export const getAllQueriesAsync = createAsyncThunk("contact/getallcontact",
   async () => {

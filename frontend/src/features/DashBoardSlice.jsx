@@ -13,11 +13,11 @@ const initialState = {
 };
 
 //API URL
-const getSalesStatisticsUrl  = `http://46.202.128.126:8000/dashboard/getSalesStatistics`;
-const getmonthlyOrdersUrl  = `http://46.202.128.126:8000/dashboard/getMonthlyOrdersDifference`;
-const getPercentageOfOrderProgressUrl  = `http://46.202.128.126:8000/dashboard/getPercentageOfOrderProgress`;
-const getOrderCountsByMonthsUrl  = `http://46.202.128.126:8000/dashboard/getOrderCountsByMonth`;
-const downloadProductsCsvFileUrl  = `http://46.202.128.126:8000/dashboard/downloadProductsCsvFile`;
+const getSalesStatisticsUrl  = `https://api.admin.scrubscraft.shop/dashboard/getSalesStatistics`;
+const getmonthlyOrdersUrl  = `https://api.admin.scrubscraft.shop/dashboard/getMonthlyOrdersDifference`;
+const getPercentageOfOrderProgressUrl  = `https://api.admin.scrubscraft.shop/dashboard/getPercentageOfOrderProgress`;
+const getOrderCountsByMonthsUrl  = `https://api.admin.scrubscraft.shop/dashboard/getOrderCountsByMonth`;
+const downloadProductsCsvFileUrl  = `https://api.admin.scrubscraft.shop/dashboard/downloadProductsCsvFile`;
 
 
 export const SalesStatisticsAsync = createAsyncThunk(

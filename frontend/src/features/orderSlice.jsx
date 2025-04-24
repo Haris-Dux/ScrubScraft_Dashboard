@@ -10,9 +10,9 @@ const initialState = {
 };
 
 //API URL
-const getAllOrdersUrl  = `http://46.202.128.126:8000/orders/getAllOrders`;
-const updateOrdersUrl  = "http://46.202.128.126:8000/orders/updateOrder";
-const getOrderByIdUrl  = "http://46.202.128.126:8000/orders/getOrderById";
+const getAllOrdersUrl  = `https://api.admin.scrubscraft.shop/orders/getAllOrders`;
+const updateOrdersUrl  = "https://api.admin.scrubscraft.shop/orders/updateOrder";
+const getOrderByIdUrl  = "https://api.admin.scrubscraft.shop/orders/getOrderById";
 
 export const getAllOrdersAsync = createAsyncThunk(
   "Orders/getallOrders",

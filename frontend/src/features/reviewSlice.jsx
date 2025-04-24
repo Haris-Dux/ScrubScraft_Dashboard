@@ -9,8 +9,8 @@ const initialState = {
 };
 
 //API URL
-const getAllReviewsUrl  = `http://46.202.128.126:8000/reviews/getAllReviews`;
-const deleteReviewsUrl  = `http://46.202.128.126:8000/reviews/deleteReview`;
+const getAllReviewsUrl  = `https://api.admin.scrubscraft.shop/reviews/getAllReviews`;
+const deleteReviewsUrl  = `https://api.admin.scrubscraft.shop/reviews/deleteReview`;
 
 export const getAllReviewsAsync = createAsyncThunk(
   "reviews/getallreviews",

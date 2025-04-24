@@ -17,11 +17,11 @@ const initialState = {
 };
 
 //API URL
-const getProductsUrl  = `http://46.202.128.126:8000/products/getProducts`;
-const createProductUrl  = "http://46.202.128.126:8000/products/addProduct";
-const updateProductUrl  = "http://46.202.128.126:8000/products/updateProduct";
-const getsingleProductUrl  = "http://46.202.128.126:8000/products/getProductById";
-const deleteProductUrl  = "http://46.202.128.126:8000/products/deleteProduct";
+const getProductsUrl  = `https://api.admin.scrubscraft.shop/products/getProducts`;
+const createProductUrl  = "https://api.admin.scrubscraft.shop/products/addProduct";
+const updateProductUrl  = "https://api.admin.scrubscraft.shop/products/updateProduct";
+const getsingleProductUrl  = "https://api.admin.scrubscraft.shop/products/getProductById";
+const deleteProductUrl  = "https://api.admin.scrubscraft.shop/products/deleteProduct";
 
 //CREATE ASYNC THUNK
 export const createProductAsync = createAsyncThunk(
