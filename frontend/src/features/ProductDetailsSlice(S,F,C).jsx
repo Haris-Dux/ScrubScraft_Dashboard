@@ -11,23 +11,23 @@ const initialState = {
 };
 
 //API URL
-const createCategoryUrl  = "http://localhost:8000/productDetails/createCategory";
-const getAllCategoriesUrl  = "http://localhost:8000/productDetails/getAllCategories";
-const updateCategoryUrl  = "http://localhost:8000/productDetails/updateCategory";
-const deleteCategoryUrl  = "http://localhost:8000/productDetails/deleteCategory";
+const createCategoryUrl  = "http://46.202.128.126:8000/productDetails/createCategory";
+const getAllCategoriesUrl  = "http://46.202.128.126:8000/productDetails/getAllCategories";
+const updateCategoryUrl  = "http://46.202.128.126:8000/productDetails/updateCategory";
+const deleteCategoryUrl  = "http://46.202.128.126:8000/productDetails/deleteCategory";
 
-const createColorUrl  = "http://localhost:8000/productDetails/createColor";
-const getAllColorsUrl  = "http://localhost:8000/productDetails/getAllColors";
-const updateColorUrl  = "http://localhost:8000/productDetails/updateColor";
-const deleteColorUrl  = "http://localhost:8000/productDetails/deleteColor";
+const createColorUrl  = "http://46.202.128.126:8000/productDetails/createColor";
+const getAllColorsUrl  = "http://46.202.128.126:8000/productDetails/getAllColors";
+const updateColorUrl  = "http://46.202.128.126:8000/productDetails/updateColor";
+const deleteColorUrl  = "http://46.202.128.126:8000/productDetails/deleteColor";
 
-const createFabricUrl  = "http://localhost:8000/productDetails/createFabric";
-const getAllFabricsUrl  = "http://localhost:8000/productDetails/getAllFabrics";
-const updateFabricUrl  = "http://localhost:8000/productDetails/updateFabric";
-const deleteFabricUrl  = "http://localhost:8000/productDetails/deleteFabric";
+const createFabricUrl  = "http://46.202.128.126:8000/productDetails/createFabric";
+const getAllFabricsUrl  = "http://46.202.128.126:8000/productDetails/getAllFabrics";
+const updateFabricUrl  = "http://46.202.128.126:8000/productDetails/updateFabric";
+const deleteFabricUrl  = "http://46.202.128.126:8000/productDetails/deleteFabric";
 
-const getAllPricingsUrl  = "http://localhost:8000/pricing/getPricing";
-const updatedPricingUrl  = "http://localhost:8000/pricing/updatePricing";
+const getAllPricingsUrl  = "http://46.202.128.126:8000/pricing/getPricing";
+const updatedPricingUrl  = "http://46.202.128.126:8000/pricing/updatePricing";
 
 //PRICINGS
 export const getAllPricingsAsync = createAsyncThunk(
