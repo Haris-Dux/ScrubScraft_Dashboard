@@ -40,7 +40,7 @@ app.use(session({
     }
   }));
 
-  app.use("/",(req, res, ) => {
+  app.get("/",(req, res, ) => {
    return res.status(200).json({method:req.method,origin:req.headers.origin})
   });
 
