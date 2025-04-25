@@ -9,16 +9,13 @@ import session from "express-session";
 import router from "./routes/routes.js";
 
 const app = express();
-
-app.use(cors({
-  credentials: true,
-  origin: (origin, callback) => {
-    console.log("CORS request from:", origin);
-    callback(null, true)
-  }
-}));
-
 app.use(cookieParser());
+app.use(cors({
+    credentials:true,
+    origin:['http://localhost:5173','https://scrubscraft.shop', 'https://admin.scrubscraft.shop',
+    'https://api.admin.scrubscraft.shop']
+  }));
+
 app.use(express.json({limit:'100mb'}));
 const MongoDBStoreSession = MongoDBStore(session);
 
@@ -39,10 +36,6 @@ app.use(session({
       maxAge:1000 * 60 * 60 * 24,
     }
   }));
-
-  app.get("/",(req, res, ) => {
-   return res.status(200).json({method:req.method,origin:req.headers.origin})
-  });
 
   app.use("", router);
 

@@ -15,12 +15,12 @@ const initialState = {
 
 //API URL
 const signupUrl  = "https://api.admin.scrubscraft.shop/users/signup";
-const loginUrl  = "http://46.202.128.126:8000/users/login";
+const loginUrl  = "https://api.admin.scrubscraft.shop/users/login";
 const logoutUrl  = "https://api.admin.scrubscraft.shop/users/logout";
 const verifyOtpUrl  = "https://api.admin.scrubscraft.shop/users/verifyOtp";
 const sendResetPasswordOTPUrl  = "https://api.admin.scrubscraft.shop/users/sendResetPasswordOTP";
 const updatePasswordUrl  = "https://api.admin.scrubscraft.shop/users/updatePassword";
-const userSession  = "http://46.202.128.126:8000/users/persistUserSession";
+const userSession  = "https://api.admin.scrubscraft.shop/users/persistUserSession";
 
 // Register Function
 export const createuserAsync = createAsyncThunk(
