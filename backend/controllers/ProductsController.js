@@ -40,16 +40,6 @@ export const addProduct = async (req, res, next) => {
 
     const trousersData = JSON.parse(req.body.trouserOptions);
    
-    trousersData.forEach((item) => {
-        if(item.selected) {
-          const {name,price} = item;
-          if(!name || !price) {
-            throw new Error(`${name} option must have a price`);
-          }
-        }
-      
-      })
-    
 
     if (parseFloat(price) <= 0) {
       throw new Error("Price must be greater than 0");
@@ -184,17 +174,6 @@ export const updateProduct = async (req, res, next) => {
 
     if(trouserOptions){
       const data = JSON.parse(req.body.trouserOptions);
-
-      data.forEach((item) => {
-        if(item.selected) {
-          const {name,price} = item;
-          if(!name || !price) {
-            throw new Error(`${name} option must have a price`);
-          }
-        }
-      
-      })
-
       updateQuery = { ...updateQuery, trouserOptions:data };
 
     }

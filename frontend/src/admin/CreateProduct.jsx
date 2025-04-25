@@ -65,18 +65,14 @@ const CreateProduct = () => {
     trouserOptions:[
       {
         selected:false,
-        name:"trouser",
-        price:""
+        name:"trouser"
       },
       {
         selected:false,
-        name:"jogerPent",
-        price:""
+        name:"jogerPent"
       }
     ]
   });
-
-  console.log("data",formdata)
 
   const handleCategoryChange = (e) => {
     const selectedCategory = e.target.value;
@@ -152,13 +148,11 @@ const CreateProduct = () => {
             trouserOptions:[
               {
                 selected:false,
-                name:"trouser",
-                price:""
-              },
+               name:"trouser"
+               },
               {
                 selected:false,
-                name:"jogerPent",
-                price:""
+                name:"jogerPent"
               }
             ]
           });
@@ -526,23 +520,7 @@ const CreateProduct = () => {
                 >
                   Trouser 
                 </label>
-                <input
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600   p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  id="price"
-                  name="price"
-                  placeholder="Enter Price"
-                  type="number"
-                  value={formdata.trouserOptions[0].price}
-                  required={!formdata.trouserOptions[0].selected}
-                  disabled={!formdata.trouserOptions[0].selected}
-                  onChange={(e) =>
-                    setFormdata({ ...formdata, trouserOptions:formdata.trouserOptions.map((option) => 
-                    option.name === "trouser" ? {...option, price:Number(e.target.value)} : option
-                    ) })
-                  }
-                />
-
-
+               
                  {/* JOGER OPTION */}
 
                 <input
@@ -566,21 +544,6 @@ const CreateProduct = () => {
                  Joger Pent
                 </label>
 
-                <input
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600  p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  id="price"
-                  name="price"
-                  placeholder="Enter Price"
-                  type="number"
-                  value={formdata.trouserOptions[1].price}
-                  required={!formdata.trouserOptions[1].selected}
-                  disabled={!formdata.trouserOptions[1].selected}
-                  onChange={(e) =>
-                    setFormdata({ ...formdata, trouserOptions:formdata.trouserOptions.map((option) => 
-                    option.name === "jogerPent" ? {...option, price: Number(e.target.value)} : option
-                    ) })
-                  }
-                />
               </div>
 
             </div>

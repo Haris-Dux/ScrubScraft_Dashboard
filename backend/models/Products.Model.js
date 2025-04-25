@@ -67,9 +67,6 @@ const productsSchema = new mongoose.Schema(
         name: {
           type: String
         },
-        price: {
-          type: Number
-        },
         selected : {
           type:Boolean,
           default: false,
