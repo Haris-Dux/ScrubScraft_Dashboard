@@ -70,7 +70,7 @@ pipeline {
                     echo "Building Docker Images"
 
                        echo "Building frontend image"
-                            docker build --build-arg API_URL=${env.VITE_API_URL} -t ${env.DOCKER_IMAGE_FRONTEND} -f frontend/Dockerfile frontend
+                            docker build -t ${env.DOCKER_IMAGE_FRONTEND} -f frontend/Dockerfile frontend
                                 
                             
                         echo "Building backend image"

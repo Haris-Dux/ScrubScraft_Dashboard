@@ -10,11 +10,6 @@ import router from "./routes/routes.js";
 
 const app = express();
 
-app.use((req, res, next) => {
-  console.log("Incoming request:", req.method, req.headers.origin);
-  next();
-});
-
 app.use(cors({
   credentials: true,
   origin: (origin, callback) => {
@@ -44,6 +39,10 @@ app.use(session({
       maxAge:1000 * 60 * 60 * 24,
     }
   }));
+
+  app.use("/",(req, res, ) => {
+   return res.status(200).json({method:req.method,origin:req.headers.origin})
+  });
 
   app.use("", router);
 
