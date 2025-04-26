@@ -238,14 +238,14 @@ const OrderDetailPage = () => {
                                 {items?.name_engraving?.position} )
                               </p>
                             )}
-                             {items?.trouserOptions && (
+                            
                               <p className="text-sm dark:text-white leading-none text-gray-800">
                                 <span className="dark:text-gray-400 font-semibold text-gray-800">
                                   Trouser Option:{" "}
                                 </span>{" "}
-                                {items?.trouserOptions}
+                                {items?.trouserOptions ? items?.trouserOptions : "--"}
                               </p>
-                            )}
+                            
                           </div>
                         </div>
                         <div className="flex justify-between space-x-8 items-start w-full">
