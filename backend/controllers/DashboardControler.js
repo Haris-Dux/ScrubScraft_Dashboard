@@ -189,6 +189,10 @@ try {
       { key: 'google_product_category', header: 'google_product_category' },
       { key: 'fb_product_category', header: 'fb_product_category' },
       { key: 'quantity_to_sell_on_facebook', header: 'quantity_to_sell_on_facebook1' },
+      { key: 'link', header: 'link' },
+      { key: 'condition', header: 'condition' },
+
+
     ],
   }).pipe(res);
 
