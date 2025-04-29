@@ -168,7 +168,9 @@ try {
     image_link:p.images.primary.downloadURL,
     google_product_category:'Apparel & Accessories > Clothing',
     fb_product_category:'Clothing & Accessories > Clothing',
-    quantity_to_sell_on_facebook:1000
+    quantity_to_sell_on_facebook:1000,
+    condition :"new",
+    link:"https://scrubscraft.shop/products"
    
   }));
 
